@@ -1,0 +1,10 @@
+
+State Machine - |lab6p3|part3:u0|control:C0|current_state
+Name current_state.end_state current_state.S_CYCLE_3 current_state.S_CYCLE_2 current_state.S_CYCLE_1 current_state.S_CYCLE_0 current_state.load_state current_state.hold_state 
+current_state.hold_state 0 0 0 0 0 0 0 
+current_state.load_state 0 0 0 0 0 1 1 
+current_state.S_CYCLE_0 0 0 0 0 1 0 1 
+current_state.S_CYCLE_1 0 0 0 1 0 0 1 
+current_state.S_CYCLE_2 0 0 1 0 0 0 1 
+current_state.S_CYCLE_3 0 1 0 0 0 0 1 
+current_state.end_state 1 0 0 0 0 0 1 

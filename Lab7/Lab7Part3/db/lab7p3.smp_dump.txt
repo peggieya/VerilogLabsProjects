@@ -1,0 +1,10 @@
+
+State Machine - |lab7p3|control:C|current_state
+Name current_state.S_WAIT_2 current_state.S_WAIT_1 current_state.S_CLEAR current_state.S_WAIT current_state.S_DRAW current_state.S_MOVE current_state.S_RESET 
+current_state.S_RESET 0 0 0 0 0 0 0 
+current_state.S_MOVE 0 0 0 0 0 1 1 
+current_state.S_DRAW 0 0 0 0 1 0 1 
+current_state.S_WAIT 0 0 0 1 0 0 1 
+current_state.S_CLEAR 0 0 1 0 0 0 1 
+current_state.S_WAIT_1 0 1 0 0 0 0 1 
+current_state.S_WAIT_2 1 0 0 0 0 0 1 

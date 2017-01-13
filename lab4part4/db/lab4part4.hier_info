@@ -1,0 +1,241 @@
+|lab4part4
+SW[0] => SW[0].IN1
+SW[1] => SW[1].IN1
+SW[2] => SW[2].IN1
+SW[3] => SW[3].IN1
+SW[4] => SW[4].IN1
+SW[5] => SW[5].IN1
+SW[6] => SW[6].IN1
+SW[7] => SW[7].IN1
+SW[8] => ~NO_FANOUT~
+SW[9] => SW[9].IN1
+KEY[0] => KEY[0].IN1
+KEY[1] => KEY[1].IN1
+KEY[2] => KEY[2].IN1
+KEY[3] => KEY[3].IN1
+LEDR[0] << rotating_register:u0.port6
+LEDR[1] << rotating_register:u0.port6
+LEDR[2] << rotating_register:u0.port6
+LEDR[3] << rotating_register:u0.port6
+LEDR[4] << rotating_register:u0.port6
+LEDR[5] << rotating_register:u0.port6
+LEDR[6] << rotating_register:u0.port6
+LEDR[7] << rotating_register:u0.port6
+
+
+|lab4part4|rotating_register:u0
+clock => clock.IN8
+reset => reset.IN8
+Loadn => Loadn.IN8
+Roright => Roright.IN8
+ASright => ASright.IN1
+DATA_IN[0] => DATA_IN[0].IN1
+DATA_IN[1] => DATA_IN[1].IN1
+DATA_IN[2] => DATA_IN[2].IN1
+DATA_IN[3] => DATA_IN[3].IN1
+DATA_IN[4] => DATA_IN[4].IN1
+DATA_IN[5] => DATA_IN[5].IN1
+DATA_IN[6] => DATA_IN[6].IN1
+DATA_IN[7] => DATA_IN[7].IN1
+Q[0] <= Q[0].DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= Q[1].DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= Q[2].DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= Q[3].DB_MAX_OUTPUT_PORT_TYPE
+Q[4] <= Q[4].DB_MAX_OUTPUT_PORT_TYPE
+Q[5] <= Q[5].DB_MAX_OUTPUT_PORT_TYPE
+Q[6] <= Q[6].DB_MAX_OUTPUT_PORT_TYPE
+Q[7] <= Q[7].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab4part4|rotating_register:u0|mux:asrightmux
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab4part4|rotating_register:u0|mux:shift7
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab4part4|rotating_register:u0|mux:load7
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab4part4|rotating_register:u0|filp_flop:FF7
+d => q.DATAA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clock => q~reg0.CLK
+reset => q.OUTPUTSELECT
+
+
+|lab4part4|rotating_register:u0|mux:shift6
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab4part4|rotating_register:u0|mux:load6
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab4part4|rotating_register:u0|filp_flop:FF6
+d => q.DATAA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clock => q~reg0.CLK
+reset => q.OUTPUTSELECT
+
+
+|lab4part4|rotating_register:u0|mux:shift5
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab4part4|rotating_register:u0|mux:load5
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab4part4|rotating_register:u0|filp_flop:FF5
+d => q.DATAA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clock => q~reg0.CLK
+reset => q.OUTPUTSELECT
+
+
+|lab4part4|rotating_register:u0|mux:shift4
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab4part4|rotating_register:u0|mux:load4
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab4part4|rotating_register:u0|filp_flop:FF4
+d => q.DATAA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clock => q~reg0.CLK
+reset => q.OUTPUTSELECT
+
+
+|lab4part4|rotating_register:u0|mux:shift3
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab4part4|rotating_register:u0|mux:load3
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab4part4|rotating_register:u0|filp_flop:FF3
+d => q.DATAA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clock => q~reg0.CLK
+reset => q.OUTPUTSELECT
+
+
+|lab4part4|rotating_register:u0|mux:shift2
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab4part4|rotating_register:u0|mux:load2
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab4part4|rotating_register:u0|filp_flop:FF2
+d => q.DATAA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clock => q~reg0.CLK
+reset => q.OUTPUTSELECT
+
+
+|lab4part4|rotating_register:u0|mux:shift1
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab4part4|rotating_register:u0|mux:load1
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab4part4|rotating_register:u0|filp_flop:FF1
+d => q.DATAA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clock => q~reg0.CLK
+reset => q.OUTPUTSELECT
+
+
+|lab4part4|rotating_register:u0|mux:shift0
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab4part4|rotating_register:u0|mux:load0
+x => m.IN0
+y => m.IN0
+s => m.IN1
+s => m.IN1
+m <= m.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab4part4|rotating_register:u0|filp_flop:FF0
+d => q.DATAA
+q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+clock => q~reg0.CLK
+reset => q.OUTPUTSELECT
+
+

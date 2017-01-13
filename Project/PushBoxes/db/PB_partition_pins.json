@@ -1,0 +1,161 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "led[0]",
+					"strict" : false
+				},
+				{
+					"name" : "led[1]",
+					"strict" : false
+				},
+				{
+					"name" : "led[2]",
+					"strict" : false
+				},
+				{
+					"name" : "led[3]",
+					"strict" : false
+				},
+				{
+					"name" : "led[4]",
+					"strict" : false
+				},
+				{
+					"name" : "led[5]",
+					"strict" : false
+				},
+				{
+					"name" : "led[6]",
+					"strict" : false
+				},
+				{
+					"name" : "led2[0]",
+					"strict" : false
+				},
+				{
+					"name" : "led2[1]",
+					"strict" : false
+				},
+				{
+					"name" : "led2[2]",
+					"strict" : false
+				},
+				{
+					"name" : "led2[3]",
+					"strict" : false
+				},
+				{
+					"name" : "led2[4]",
+					"strict" : false
+				},
+				{
+					"name" : "led2[5]",
+					"strict" : false
+				},
+				{
+					"name" : "led2[6]",
+					"strict" : false
+				},
+				{
+					"name" : "led3[0]",
+					"strict" : false
+				},
+				{
+					"name" : "led3[1]",
+					"strict" : false
+				},
+				{
+					"name" : "led3[2]",
+					"strict" : false
+				},
+				{
+					"name" : "led3[3]",
+					"strict" : false
+				},
+				{
+					"name" : "led3[4]",
+					"strict" : false
+				},
+				{
+					"name" : "led3[5]",
+					"strict" : false
+				},
+				{
+					"name" : "led3[6]",
+					"strict" : false
+				},
+				{
+					"name" : "led4[0]",
+					"strict" : false
+				},
+				{
+					"name" : "led4[1]",
+					"strict" : false
+				},
+				{
+					"name" : "led4[2]",
+					"strict" : false
+				},
+				{
+					"name" : "led4[3]",
+					"strict" : false
+				},
+				{
+					"name" : "led4[4]",
+					"strict" : false
+				},
+				{
+					"name" : "led4[5]",
+					"strict" : false
+				},
+				{
+					"name" : "led4[6]",
+					"strict" : false
+				},
+				{
+					"name" : "vga_clk",
+					"strict" : false
+				},
+				{
+					"name" : "vga_blank_n",
+					"strict" : false
+				},
+				{
+					"name" : "vsync",
+					"strict" : false
+				},
+				{
+					"name" : "rgbout[0]",
+					"strict" : false
+				},
+				{
+					"name" : "rgbout[1]",
+					"strict" : false
+				},
+				{
+					"name" : "rgbout[2]",
+					"strict" : false
+				},
+				{
+					"name" : "hsync",
+					"strict" : false
+				},
+				{
+					"name" : "ori_clkin",
+					"strict" : false
+				},
+				{
+					"name" : "kb_clk",
+					"strict" : false
+				},
+				{
+					"name" : "kb_data",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

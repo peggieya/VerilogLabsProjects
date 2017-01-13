@@ -1,0 +1,11 @@
+
+State Machine - |lab7p2|control:con|current_state
+Name current_state.acttemp current_state.actturnblack current_state.actplot current_state.actcolourfrominput current_state.actloady current_state.actloadxwait current_state.actloadx current_state.actstart 
+current_state.actstart 0 0 0 0 0 0 0 0 
+current_state.actloadx 0 0 0 0 0 0 1 1 
+current_state.actloadxwait 0 0 0 0 0 1 0 1 
+current_state.actloady 0 0 0 0 1 0 0 1 
+current_state.actcolourfrominput 0 0 0 1 0 0 0 1 
+current_state.actplot 0 0 1 0 0 0 0 1 
+current_state.actturnblack 0 1 0 0 0 0 0 1 
+current_state.acttemp 1 0 0 0 0 0 0 1 

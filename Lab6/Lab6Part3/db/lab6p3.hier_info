@@ -1,0 +1,337 @@
+|lab6p3
+SW[0] => SW[0].IN1
+SW[1] => SW[1].IN1
+SW[2] => SW[2].IN1
+SW[3] => SW[3].IN1
+SW[4] => SW[4].IN1
+SW[5] => SW[5].IN1
+SW[6] => SW[6].IN1
+SW[7] => SW[7].IN1
+SW[8] => ~NO_FANOUT~
+SW[9] => ~NO_FANOUT~
+KEY[0] => resetn.IN1
+KEY[1] => go.IN1
+KEY[2] => ~NO_FANOUT~
+KEY[3] => ~NO_FANOUT~
+CLOCK_50 => CLOCK_50.IN1
+LEDR[0] <= data_result[0].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[1] <= data_result[1].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[2] <= data_result[2].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[3] <= data_result[3].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[4] <= <GND>
+LEDR[5] <= <GND>
+LEDR[6] <= <GND>
+LEDR[7] <= <GND>
+LEDR[8] <= <GND>
+LEDR[9] <= <GND>
+HEX0[0] <= hex_decoder:H5.segments
+HEX0[1] <= hex_decoder:H5.segments
+HEX0[2] <= hex_decoder:H5.segments
+HEX0[3] <= hex_decoder:H5.segments
+HEX0[4] <= hex_decoder:H5.segments
+HEX0[5] <= hex_decoder:H5.segments
+HEX0[6] <= hex_decoder:H5.segments
+HEX1[0] <= hex_decoder:H2.segments
+HEX1[1] <= hex_decoder:H2.segments
+HEX1[2] <= hex_decoder:H2.segments
+HEX1[3] <= hex_decoder:H2.segments
+HEX1[4] <= hex_decoder:H2.segments
+HEX1[5] <= hex_decoder:H2.segments
+HEX1[6] <= hex_decoder:H2.segments
+HEX2[0] <= hex_decoder:H4.segments
+HEX2[1] <= hex_decoder:H4.segments
+HEX2[2] <= hex_decoder:H4.segments
+HEX2[3] <= hex_decoder:H4.segments
+HEX2[4] <= hex_decoder:H4.segments
+HEX2[5] <= hex_decoder:H4.segments
+HEX2[6] <= hex_decoder:H4.segments
+HEX3[0] <= hex_decoder:H3.segments
+HEX3[1] <= hex_decoder:H3.segments
+HEX3[2] <= hex_decoder:H3.segments
+HEX3[3] <= hex_decoder:H3.segments
+HEX3[4] <= hex_decoder:H3.segments
+HEX3[5] <= hex_decoder:H3.segments
+HEX3[6] <= hex_decoder:H3.segments
+HEX4[0] <= hex_decoder:H0.segments
+HEX4[1] <= hex_decoder:H0.segments
+HEX4[2] <= hex_decoder:H0.segments
+HEX4[3] <= hex_decoder:H0.segments
+HEX4[4] <= hex_decoder:H0.segments
+HEX4[5] <= hex_decoder:H0.segments
+HEX4[6] <= hex_decoder:H0.segments
+HEX5[0] <= hex_decoder:H1.segments
+HEX5[1] <= hex_decoder:H1.segments
+HEX5[2] <= hex_decoder:H1.segments
+HEX5[3] <= hex_decoder:H1.segments
+HEX5[4] <= hex_decoder:H1.segments
+HEX5[5] <= hex_decoder:H1.segments
+HEX5[6] <= hex_decoder:H1.segments
+
+
+|lab6p3|part3:u0
+clk => clk.IN2
+resetn => resetn.IN2
+go => go.IN1
+data_in[0] => data_in[0].IN1
+data_in[1] => data_in[1].IN1
+data_in[2] => data_in[2].IN1
+data_in[3] => data_in[3].IN1
+data_in[4] => data_in[4].IN1
+data_in[5] => data_in[5].IN1
+data_in[6] => data_in[6].IN1
+data_in[7] => data_in[7].IN1
+data_result[0] <= datapath:D0.data_result
+data_result[1] <= datapath:D0.data_result
+data_result[2] <= datapath:D0.data_result
+data_result[3] <= datapath:D0.data_result
+data_result[4] <= datapath:D0.data_result
+data_result[5] <= datapath:D0.data_result
+data_result[6] <= datapath:D0.data_result
+data_result[7] <= datapath:D0.data_result
+dividend[0] <= datapath:D0.dividend
+dividend[1] <= datapath:D0.dividend
+dividend[2] <= datapath:D0.dividend
+dividend[3] <= datapath:D0.dividend
+divisor[0] <= datapath:D0.divisor
+divisor[1] <= datapath:D0.divisor
+divisor[2] <= datapath:D0.divisor
+divisor[3] <= datapath:D0.divisor
+
+
+|lab6p3|part3:u0|control:C0
+clk => current_state~1.DATAIN
+resetn => current_state.OUTPUTSELECT
+resetn => current_state.OUTPUTSELECT
+resetn => current_state.OUTPUTSELECT
+resetn => current_state.OUTPUTSELECT
+resetn => current_state.OUTPUTSELECT
+resetn => current_state.OUTPUTSELECT
+resetn => current_state.OUTPUTSELECT
+go => Selector1.IN2
+go => Selector0.IN2
+go => next_state.S_CYCLE_0.DATAB
+do <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+load <= load.DB_MAX_OUTPUT_PORT_TYPE
+ld_r <= ld_r.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab6p3|part3:u0|datapath:D0
+clk => data_result[0]~reg0.CLK
+clk => data_result[1]~reg0.CLK
+clk => data_result[2]~reg0.CLK
+clk => data_result[3]~reg0.CLK
+clk => data_result[4]~reg0.CLK
+clk => data_result[5]~reg0.CLK
+clk => data_result[6]~reg0.CLK
+clk => data_result[7]~reg0.CLK
+clk => divisor[0]~reg0.CLK
+clk => divisor[1]~reg0.CLK
+clk => divisor[2]~reg0.CLK
+clk => divisor[3]~reg0.CLK
+clk => dividend[0]~reg0.CLK
+clk => dividend[1]~reg0.CLK
+clk => dividend[2]~reg0.CLK
+clk => dividend[3]~reg0.CLK
+clk => operation[0].CLK
+clk => operation[1].CLK
+clk => operation[2].CLK
+clk => operation[3].CLK
+clk => operation[4].CLK
+clk => operation[5].CLK
+clk => operation[6].CLK
+clk => operation[7].CLK
+clk => operation[8].CLK
+resetn => operation.OUTPUTSELECT
+resetn => operation.OUTPUTSELECT
+resetn => operation.OUTPUTSELECT
+resetn => operation.OUTPUTSELECT
+resetn => operation.OUTPUTSELECT
+resetn => operation.OUTPUTSELECT
+resetn => operation.OUTPUTSELECT
+resetn => operation.OUTPUTSELECT
+resetn => operation.OUTPUTSELECT
+resetn => dividend.OUTPUTSELECT
+resetn => dividend.OUTPUTSELECT
+resetn => dividend.OUTPUTSELECT
+resetn => dividend.OUTPUTSELECT
+resetn => divisor.OUTPUTSELECT
+resetn => divisor.OUTPUTSELECT
+resetn => divisor.OUTPUTSELECT
+resetn => divisor.OUTPUTSELECT
+resetn => data_result.OUTPUTSELECT
+resetn => data_result.OUTPUTSELECT
+resetn => data_result.OUTPUTSELECT
+resetn => data_result.OUTPUTSELECT
+resetn => data_result.OUTPUTSELECT
+resetn => data_result.OUTPUTSELECT
+resetn => data_result.OUTPUTSELECT
+resetn => data_result.OUTPUTSELECT
+data_in[0] => divisor.DATAB
+data_in[1] => divisor.DATAB
+data_in[2] => divisor.DATAB
+data_in[3] => divisor.DATAB
+data_in[4] => dividend.DATAB
+data_in[4] => operation.DATAB
+data_in[5] => dividend.DATAB
+data_in[5] => operation.DATAB
+data_in[6] => dividend.DATAB
+data_in[6] => operation.DATAB
+data_in[7] => dividend.DATAB
+data_in[7] => operation.DATAB
+do => operation.OUTPUTSELECT
+do => operation.OUTPUTSELECT
+do => operation.OUTPUTSELECT
+do => operation.OUTPUTSELECT
+do => operation.OUTPUTSELECT
+do => operation.OUTPUTSELECT
+do => operation.OUTPUTSELECT
+do => operation.OUTPUTSELECT
+do => operation.OUTPUTSELECT
+load => dividend.OUTPUTSELECT
+load => dividend.OUTPUTSELECT
+load => dividend.OUTPUTSELECT
+load => dividend.OUTPUTSELECT
+load => divisor.OUTPUTSELECT
+load => divisor.OUTPUTSELECT
+load => divisor.OUTPUTSELECT
+load => divisor.OUTPUTSELECT
+load => operation.OUTPUTSELECT
+load => operation.OUTPUTSELECT
+load => operation.OUTPUTSELECT
+load => operation.OUTPUTSELECT
+load => operation.OUTPUTSELECT
+load => operation.OUTPUTSELECT
+load => operation.OUTPUTSELECT
+load => operation.OUTPUTSELECT
+load => operation.OUTPUTSELECT
+ld_r => data_result.OUTPUTSELECT
+ld_r => data_result.OUTPUTSELECT
+ld_r => data_result.OUTPUTSELECT
+ld_r => data_result.OUTPUTSELECT
+ld_r => data_result.OUTPUTSELECT
+ld_r => data_result.OUTPUTSELECT
+ld_r => data_result.OUTPUTSELECT
+ld_r => data_result.OUTPUTSELECT
+data_result[0] <= data_result[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_result[1] <= data_result[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_result[2] <= data_result[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_result[3] <= data_result[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_result[4] <= data_result[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_result[5] <= data_result[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_result[6] <= data_result[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+data_result[7] <= data_result[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dividend[0] <= dividend[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dividend[1] <= dividend[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dividend[2] <= dividend[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dividend[3] <= dividend[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+divisor[0] <= divisor[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+divisor[1] <= divisor[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+divisor[2] <= divisor[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+divisor[3] <= divisor[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab6p3|part3:u0|datapath:D0|shift:s1
+recent[0] => shiftRight[1].DATAIN
+recent[1] => shiftRight[2].DATAIN
+recent[2] => shiftRight[3].DATAIN
+recent[3] => shiftRight[4].DATAIN
+recent[4] => shiftRight[5].DATAIN
+recent[5] => shiftRight[6].DATAIN
+recent[6] => shiftRight[7].DATAIN
+recent[7] => shiftRight[8].DATAIN
+recent[8] => ~NO_FANOUT~
+shiftRight[0] <= <GND>
+shiftRight[1] <= recent[0].DB_MAX_OUTPUT_PORT_TYPE
+shiftRight[2] <= recent[1].DB_MAX_OUTPUT_PORT_TYPE
+shiftRight[3] <= recent[2].DB_MAX_OUTPUT_PORT_TYPE
+shiftRight[4] <= recent[3].DB_MAX_OUTPUT_PORT_TYPE
+shiftRight[5] <= recent[4].DB_MAX_OUTPUT_PORT_TYPE
+shiftRight[6] <= recent[5].DB_MAX_OUTPUT_PORT_TYPE
+shiftRight[7] <= recent[6].DB_MAX_OUTPUT_PORT_TYPE
+shiftRight[8] <= recent[7].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab6p3|hex_decoder:H0
+hex_digit[0] => Decoder0.IN3
+hex_digit[1] => Decoder0.IN2
+hex_digit[2] => Decoder0.IN1
+hex_digit[3] => Decoder0.IN0
+segments[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+segments[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+segments[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+segments[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+segments[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+segments[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab6p3|hex_decoder:H1
+hex_digit[0] => Decoder0.IN3
+hex_digit[1] => Decoder0.IN2
+hex_digit[2] => Decoder0.IN1
+hex_digit[3] => Decoder0.IN0
+segments[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+segments[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+segments[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+segments[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+segments[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+segments[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab6p3|hex_decoder:H2
+hex_digit[0] => Decoder0.IN3
+hex_digit[1] => Decoder0.IN2
+hex_digit[2] => Decoder0.IN1
+hex_digit[3] => Decoder0.IN0
+segments[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+segments[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+segments[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+segments[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+segments[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+segments[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab6p3|hex_decoder:H3
+hex_digit[0] => Decoder0.IN3
+hex_digit[1] => Decoder0.IN2
+hex_digit[2] => Decoder0.IN1
+hex_digit[3] => Decoder0.IN0
+segments[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+segments[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+segments[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+segments[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+segments[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+segments[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab6p3|hex_decoder:H4
+hex_digit[0] => Decoder0.IN3
+hex_digit[1] => Decoder0.IN2
+hex_digit[2] => Decoder0.IN1
+hex_digit[3] => Decoder0.IN0
+segments[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+segments[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+segments[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+segments[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+segments[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+segments[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab6p3|hex_decoder:H5
+hex_digit[0] => Decoder0.IN3
+hex_digit[1] => Decoder0.IN2
+hex_digit[2] => Decoder0.IN1
+hex_digit[3] => Decoder0.IN0
+segments[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+segments[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+segments[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+segments[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+segments[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+segments[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+segments[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+

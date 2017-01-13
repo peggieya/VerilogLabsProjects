@@ -1,0 +1,107 @@
+|lab5p3
+SW[0] => SW[0].IN1
+SW[1] => SW[1].IN1
+SW[2] => SW[2].IN1
+KEY[0] => KEY[0].IN1
+KEY[1] => KEY[1].IN1
+CLOCK_50 => CLOCK_50.IN1
+LEDR[0] <= display:u1.l
+
+
+|lab5p3|counter:u2
+ck => count[0].CLK
+ck => count[1].CLK
+ck => count[2].CLK
+ck => count[3].CLK
+ck => count[4].CLK
+ck => count[5].CLK
+ck => count[6].CLK
+ck => count[7].CLK
+ck => count[8].CLK
+ck => count[9].CLK
+ck => count[10].CLK
+ck => count[11].CLK
+ck => count[12].CLK
+ck => count[13].CLK
+ck => count[14].CLK
+ck => count[15].CLK
+ck => count[16].CLK
+ck => count[17].CLK
+ck => count[18].CLK
+ck => count[19].CLK
+ck => count[20].CLK
+ck => count[21].CLK
+ck => count[22].CLK
+ck => count[23].CLK
+ck => count[24].CLK
+ck => count[25].CLK
+enable <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab5p3|muxM:u0
+select[0] => Decoder0.IN2
+select[0] => Decoder1.IN1
+select[1] => Decoder0.IN1
+select[1] => Decoder1.IN0
+select[2] => Decoder0.IN0
+out[0] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+out[1] <= <GND>
+out[2] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[3] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+out[4] <= Decoder1.DB_MAX_OUTPUT_PORT_TYPE
+out[5] <= out.DB_MAX_OUTPUT_PORT_TYPE
+out[6] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+out[7] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+out[8] <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+out[9] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+out[10] <= <VCC>
+
+
+|lab5p3|display:u1
+morse_connect[0] => morsecode.DATAB
+morse_connect[1] => morsecode.DATAB
+morse_connect[2] => morsecode.DATAB
+morse_connect[3] => morsecode.DATAB
+morse_connect[4] => morsecode.DATAB
+morse_connect[5] => morsecode.DATAB
+morse_connect[6] => morsecode.DATAB
+morse_connect[7] => morsecode.DATAB
+morse_connect[8] => morsecode.DATAB
+morse_connect[9] => morsecode.DATAB
+morse_connect[10] => morsecode.DATAB
+reset => morsecode.OUTPUTSELECT
+reset => morsecode.OUTPUTSELECT
+reset => morsecode.OUTPUTSELECT
+reset => morsecode.OUTPUTSELECT
+reset => morsecode.OUTPUTSELECT
+reset => morsecode.OUTPUTSELECT
+reset => morsecode.OUTPUTSELECT
+reset => morsecode.OUTPUTSELECT
+reset => morsecode.OUTPUTSELECT
+reset => morsecode.OUTPUTSELECT
+reset => morsecode.OUTPUTSELECT
+shift => morsecode[0].CLK
+shift => morsecode[1].CLK
+shift => morsecode[2].CLK
+shift => morsecode[3].CLK
+shift => morsecode[4].CLK
+shift => morsecode[5].CLK
+shift => morsecode[6].CLK
+shift => morsecode[7].CLK
+shift => morsecode[8].CLK
+shift => morsecode[9].CLK
+shift => morsecode[10].CLK
+enable => morsecode.OUTPUTSELECT
+enable => morsecode.OUTPUTSELECT
+enable => morsecode.OUTPUTSELECT
+enable => morsecode.OUTPUTSELECT
+enable => morsecode.OUTPUTSELECT
+enable => morsecode.OUTPUTSELECT
+enable => morsecode.OUTPUTSELECT
+enable => morsecode.OUTPUTSELECT
+enable => morsecode.OUTPUTSELECT
+enable => morsecode.OUTPUTSELECT
+enable => morsecode.OUTPUTSELECT
+l <= morsecode[10].DB_MAX_OUTPUT_PORT_TYPE
+
+

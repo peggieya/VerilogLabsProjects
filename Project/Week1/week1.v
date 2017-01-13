@@ -1,0 +1,436 @@
+//MAIN
+module week1
+    (
+        CLOCK_50,                       //  On Board 50 MHz
+        SW,
+        KEY,
+        VGA_CLK,                        //  VGA Clock
+        VGA_HS,                         //  VGA H_SYNC
+        VGA_VS,                         //  VGA V_SYNC
+        VGA_BLANK_N,                        //  VGA BLANK
+        VGA_SYNC_N,                     //  VGA SYNC
+        VGA_R,                          //  VGA Red[9:0]
+        VGA_G,                          //  VGA Green[9:0]
+        VGA_B                           //  VGA Blue[9:0]
+    );
+
+    input           CLOCK_50;               //  50 MHz
+    input [9:0] SW; // 9:7 - color, 6:0 - input X,Y
+    input [3:0] KEY; // 3 - load X(7b), 2 - black, 1 - plot, 0 - reset
+    output          VGA_CLK;                //  VGA Clock
+    output          VGA_HS;                 //  VGA H_SYNC
+    output          VGA_VS;                 //  VGA V_SYNC
+    output          VGA_BLANK_N;                //  VGA BLANK
+    output          VGA_SYNC_N;             //  VGA SYNC
+    output  [9:0]   VGA_R;                  //  VGA Red[9:0]
+    output  [9:0]   VGA_G;                  //  VGA Green[9:0]
+    output  [9:0]   VGA_B;                  //  VGA Blue[9:0]
+
+    wire resetn;
+    assign resetn = KEY[0];
+
+    wire [2:0] colorin;
+    wire ld_X, ld_Y, black, clear, move;
+    wire frameclk;
+
+    assign black = ~KEY[2];
+
+    wire [2:0] colour;
+    wire [7:0] x;
+    wire [6:0] y;
+    wire writeEn;
+
+    vga_adapter VGA(
+            .resetn(resetn),
+            .clock(CLOCK_50),
+            .colour(colour),
+            .x(x),
+            .y(y),
+            .plot(writeEn),
+            /* Signals for the DAC to drive the monitor. */
+            .VGA_R(VGA_R),
+            .VGA_G(VGA_G),
+            .VGA_B(VGA_B),
+            .VGA_HS(VGA_HS),
+            .VGA_VS(VGA_VS),
+            .VGA_BLANK(VGA_BLANK_N),
+            .VGA_SYNC(VGA_SYNC_N),
+            .VGA_CLK(VGA_CLK));
+        defparam VGA.RESOLUTION = "160x120";
+        defparam VGA.MONOCHROME = "FALSE";
+        defparam VGA.BITS_PER_COLOUR_CHANNEL = 1;
+        defparam VGA.BACKGROUND_IMAGE = "bg1.mif";
+
+    frame F (CLOCK_50, frameclk, resetn);
+   datapath D (ld_X, ld_Y, black, resetn, writeEn, clear, move, CLOCK_50, frameclk, colorin, colour, x, y);
+   control  C (resetn, CLOCK_50, frameclk, ld_X, ld_Y, writeEn, clear, move);
+	//boundary1 B(.x(x),.y(y),.clk(CLOCK_50),.colour(colorin));
+
+endmodule
+
+
+/*module boundary1(x,y,clk,colour);
+input [7:0] x;
+input [6:0] y;
+input clk;
+output reg [2:0]colour;
+
+    reg [7:0] xo;// original coordinate
+    reg [6:0] yo;
+    reg [1:0] direct;
+	 	
+   localparam width 		= 8'd160,
+				  height 	= 7'd120;
+
+
+always@(*) 
+	 begin
+		if (x == 7'd0)begin
+			if ((y >= 7'd75) && (y<= 7'd90))begin
+				colour <= 3'b100;
+			end
+			else colour <= 3'b000;
+		end
+		
+		else if( (x > 7'd0 )&&(x < 7'd60)) begin
+			if((y == 7'd75) ||(y == 7'd90))begin
+            colour <= 3'b100;
+				end
+			else colour <= 3'b000;
+      end 
+		
+      else if(x == 7'd60) begin
+			if((y>=7'd0)&&(y<=7'd75))begin
+           colour <= 3'b100;
+			end
+			else if (y == 7'd90)begin
+				colour <= 3'b100;
+			end
+			else colour <= 3'b000;
+      end
+		
+      else if((x > 7'd60) && (x< 7'd80)) begin
+			if((y==7'd0) || (y == 7'd90) )begin
+           colour <= 3'b100;
+			end
+			else colour <= 3'b000;
+		end 
+		
+      else if(x == 7'd80) begin
+			if(((y>=7'd0) && (y <= 7'd45) ) || ((y >= 7'd90) && (y<=7'd120)))begin
+           colour <= 3'b100;
+			end
+			else colour <= 3'b000;
+		end 
+			
+      else if((x > 7'd80) && (x < 7'd100)) begin
+			if((y == 7'd45 ) || (y == 7'd120))begin
+           colour <= 3'b100;
+			end
+			else colour <= 3'b000;
+		end 
+		
+      else if(x == 7'd100) begin
+			if((y == 7'd45 ) || ((y >= 7'd60) && (y <= 7'd120)))begin
+           colour <= 3'b100;
+			end
+			else colour <= 3'b000;
+		end 	
+		
+      else if((x > 7'd100) && (x < 7'd160)) begin
+			if((y == 7'd45 ) || ((y == 7'd60) ))begin
+           colour <= 3'b100;
+			end
+			else colour <= 3'b000;
+		end 		
+		
+      else if(x == 7'd160) begin
+			if((y >= 7'd45 ) && (y <= 7'd60 ))begin
+           colour <= 3'b100;
+			end
+			else colour <= 3'b000;
+
+		end 
+		
+			
+end
+
+   /* always@(posedge clk) begin
+      if(!writeEn) begin
+            y <= yo;
+      end
+      else if(x == xo + 2'd3 && ld_Y && writeEn && y < yo + 3'd4) begin
+            y <= y + 1'b1;
+      end
+      else if(y == yo + 3'd5 && x == xo) begin
+            y <= yo;
+      end
+      else y <= y;
+    end*/
+
+
+    /*always@(posedge clk) begin
+      if(black | clear) colour <= 3'b000;
+      else colour <= 3'b100;
+    end
+endmodule*/
+//DATAPATH
+module datapath(ld_X, ld_Y, black, resetn, writeEn, clear, move, clk, frameclk, colorin, colour, x, y);
+    input ld_X, ld_Y, black, resetn, writeEn, clk, clear, move;
+    input frameclk;
+    input [2:0] colorin;
+    output reg [2:0] colour;
+    output reg [7:0] x;//changing coordinate
+    output reg [6:0] y;
+
+    reg [7:0] xo;// original coordinate
+    reg [6:0] yo;
+    reg [1:0] direct;
+	 	
+   localparam width 		= 8'd160,
+				  height 	= 7'd120;
+
+	/*always@(posedge clk) begin
+	  if(!writeEn) begin
+			x <= 7'd0;
+	  end
+	  else if(x <  width && ld_X && writeEn) begin
+			x <= x + 1'b1; 
+	  end
+	  else if(x == width && ld_X && writeEn) begin
+			x <= 7'd0;
+	  end
+	  else x <= x;
+	end
+	
+	always@(posedge clk) begin
+	  if(!writeEn) begin
+			y <= 7'd0;
+	  end
+	  else if(x == width && ld_Y && writeEn && y < height) begin
+			y <= y + 1'b1;
+	  end
+	  else if(y == height && x == 7'd0 && ld_Y && writeEn) begin
+			y <= 6'b0;
+	  end
+	  else y <= y;
+	end*/
+    always@(posedge clk) begin
+      if(!writeEn) begin
+            x <= xo;
+      end
+      else if(ld_X && writeEn && x < xo + 2'd3) begin
+            x <= x + 1'b1;
+      end
+      else if(x == xo + 2'd3 && ld_X && writeEn) begin
+            x <= xo;
+      end
+      else x <= x;
+    end
+
+    always@(posedge clk) begin
+      if(!writeEn) begin
+            y <= yo;
+      end
+      else if(x == xo + 2'd3 && ld_Y && writeEn && y < yo + 3'd4) begin
+            y <= y + 1'b1;
+      end
+      else if(y == yo + 3'd5 && x == xo && ld_Y && writeEn) begin
+            y <= yo;
+      end
+      else y <= y;
+    end
+
+    always@(posedge clk) begin
+		colour <= colorin;
+    end
+
+    always@(posedge clk) begin
+        if(!resetn) begin
+            direct <= 2'b11;
+        end
+        if((yo == 7'd0 | yo == 7'd118) && frameclk && !move) begin
+            direct[0] <= ~direct[0];
+        end
+        if((xo == 8'd0 | xo == 8'd156) && frameclk && !move) begin
+            direct[1] <= ~direct[1];
+        end
+    end
+
+  always@(posedge clk) begin
+        if (!resetn) begin
+            xo <= 8'd1;
+            yo <= 7'd1;
+        end
+        else if (direct == 2'b11 && move) begin
+           xo <= xo + 1'b1;
+            yo <= yo + 1'b1;
+        end
+        else if (direct == 2'b10 && move) begin
+           xo <= xo + 1'b1;
+            yo <= yo - 1'b1;
+        end
+        else if (direct == 2'b01 && move) begin
+           xo <= xo - 1'b1;
+            yo <= yo + 1'b1;
+        end
+        else if (direct == 2'b00 && move) begin
+           xo <= xo - 1'b1;
+            yo <= yo - 1'b1;
+        end
+    end
+
+endmodule
+
+//CONTROL
+module control(resetn, clk, frameclk, ld_X, ld_Y, writeEn, clear, move);
+    input resetn, clk, frameclk;
+    reg [8:0] scounter;
+    reg count;
+    output reg ld_X, ld_Y, writeEn, clear, move;
+
+    reg [1:0] current_state, next_state;
+
+   localparam  S_RESET    = 3'd0,
+                    S_MOVE     = 3'd1,
+               S_DRAW     = 3'd2,
+                    S_WAIT     = 3'd3,
+                    S_CLEAR    = 3'd4,
+                    S_WAIT_1        = 3'd5,
+                    S_WAIT_2        = 3'd6,
+                    
+
+					// Parameter for scounter
+					S_COUNTER_VALUE	= 8'd160;	// 160 = 8'b10100000
+                    
+   always@(posedge clk) begin
+        if(!count) begin 
+            scounter <= 8'd0; 
+        end
+        else if (scounter == S_COUNTER_VALUE) begin 
+            scounter <= S_COUNTER_VALUE;
+        end
+        else scounter <= scounter + 1'b1;
+     end
+    
+     always@(*)
+    begin: state_table 
+            case (current_state)
+                    S_RESET: next_state = S_WAIT;
+                    
+                    S_MOVE: next_state = S_WAIT;
+                    
+                    S_WAIT: next_state = S_WAIT_2;
+                    
+                    S_WAIT_2: next_state = S_DRAW;
+                    
+                    S_DRAW: 
+                        if(!frameclk) begin 
+                            next_state = S_DRAW;
+                        end
+                        else next_state = S_WAIT_1;
+
+                    S_WAIT_1:
+                        next_state = S_CLEAR;
+                        
+                    S_CLEAR: if(scounter < 5'b11111) begin 
+                        next_state = S_CLEAR;
+                        
+                        end
+                    else next_state = S_MOVE;
+            default:     next_state = S_RESET;
+        endcase
+    end // state_table
+     
+     always @(*)
+    begin: enable_signals
+          ld_X = 1'b0;
+          ld_Y = 1'b0;
+          writeEn = 1'b0;
+          clear = 1'b1;
+          count = 1'b0;
+          move = 1'b0;
+
+        case (current_state)
+            S_RESET: begin
+                ld_X = 1'b1;
+                     ld_Y = 1'b1;
+                     writeEn = 1'b1;
+                end
+                S_MOVE: begin
+                     move = 1'b1;
+                     end
+                // S_WAIT
+                S_WAIT_2: begin
+                    clear = 1'b0;
+                    writeEn = 1'b1;
+                end
+                S_DRAW: begin
+                     ld_X = 1'b1;
+                     ld_Y = 1'b1;
+                     writeEn = 1'b1;
+                     clear = 1'b0;
+                     end
+                // S_WAIT_1
+
+                S_CLEAR: begin
+                     count = 1'b1;
+                     ld_X = 1'b1;
+                     ld_Y = 1'b1;
+                     writeEn = 1'b1;
+                     end
+        endcase
+    end // enable_signals
+
+     always@(posedge clk)
+    begin: state_FFs
+        if(!resetn)
+            current_state <= S_RESET;
+        else
+            current_state <= next_state;
+    end // state_FFS
+endmodule
+
+//FRAME CLOCK
+module frame(clk, frameclk, resetn);
+    input clk, resetn;
+    output frameclk;
+
+    reg [25:0] counter;
+
+    always @(posedge clk) begin
+        if (!resetn) counter <= 26'd0;
+        else if (counter == 26'd5000000) counter <= 26'd0;
+        else counter <= counter + 1'b1;
+    end
+
+    assign frameclk = (counter == 26'd5000000) ? 1'b1 : 1'b0;
+
+endmodule
+
+/*module boundary1(clk,color_out);
+input clk;
+output reg[2:0]color_out;
+wire [7:0]xb;
+wire [6:0]yb;
+
+always@(posedge clk)
+begin 
+if(xb == 7'd60)begin
+	yb = yb +1;
+	if((yb<=75) && (yb>=0))begin 
+		color_out <= 3'b100;
+	end
+if((xb > 7'd60) && (xb<=7'd80))begin
+
+
+end
+
+end
+end
+end
+endmodule 
+
+module
+
+module boxes();*/

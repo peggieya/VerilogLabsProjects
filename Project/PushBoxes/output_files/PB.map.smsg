@@ -1,0 +1,2 @@
+Warning (10268): Verilog HDL information at PB.v(116): always construct contains both blocking and non-blocking assignments File: W:/ECE241/Project/PushBoxes/PB.v Line: 116
+Warning (10268): Verilog HDL information at PB.v(1238): always construct contains both blocking and non-blocking assignments File: W:/ECE241/Project/PushBoxes/PB.v Line: 1238

@@ -1,0 +1,99 @@
+module Lab5Part3(SW, KEY, CLOCK_50, LEDR);
+input [2:0] SW;
+input [1:0] KEY;
+input CLOCK_50;
+output [0:0] LEDR;
+
+morseDecoder call(.clk(CLOCK_50), .a(SW[0]), .b(SW[1]), .c(SW[2]), .display_enable(KEY[1]), .reset(KEY[0]), .LEDout(LEDR[0]));
+endmodule
+
+module morseDecoder(clk,a,b,c, display_enable, reset, LEDout);
+input clk, a,b,c, display_enable, reset;
+output LEDout;  
+wire enable_connect;
+wire [10:0] morse_connect;
+
+rateDiv u0(clk, enable_connect);//create rateDiv enable signal
+mux3to1 u1(a,b,c, morse_connect);//create morse output to the LFSR
+myLFSR u2(morse_connect, reset, enable_connect, display_enable, LEDout);//connect modules together
+
+
+
+endmodule
+
+module rateDiv(clk, enable);
+input clk;
+output enable;
+reg[25:0]count;
+
+always@(posedge clk)
+begin
+if(enable)
+count <= 26'd0;
+else
+count <= count + 1'b1;
+end
+
+assign enable = (count == 26'd25000000)?1'b1:1'b0;
+endmodule
+
+
+
+module mux3to1(a,b,c,Out);
+input a,b,c;
+output [10:0] Out;
+reg [10:0] Out;
+wire [2:0] select;
+assign select = {c,b,a};
+
+always@(select)
+case(select[2:0])
+3'b000:
+Out = 11'b10111000000;
+3'b001:
+Out = 11'b11101010100;
+3'b010:
+Out = 11'b11101011101;
+3'b011:
+Out = 11'b11101010000;
+3'b100:
+Out = 11'b10000000000;
+3'b101:
+Out = 11'b10101110100;
+3'b110:
+Out = 11'b11101110100;
+3'b111:
+Out = 11'b10101010000;
+endcase
+endmodule
+
+/*module mux2to1(input x,y,s output m)
+assign m = s?y:x;
+endmodule
+
+module myDFF(input D, clk, reset, output reg Q);
+always @(posedge clk)
+if(!reset)
+Q<=0;
+else
+Q<=D;
+endmodule*/
+
+module myLFSR(morse, reset, enable, display_enable, Out);
+input [10:0] morse;
+input reset;
+input enable;
+input display_enable;
+output Out;
+
+reg[10:0]morseCode;
+always@(posedge enable)
+if(!reset)
+morseCode <= 0;
+else if(display_enable)
+morseCode <= morse;
+else if(!display_enable)
+morseCode <= morseCode << 1;
+
+assign Out = morseCode[10];
+endmodule

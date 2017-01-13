@@ -1,0 +1,566 @@
+Analysis & Synthesis report for PB
+Thu Dec 01 14:15:00 2016
+Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |PB|keyboard:U9|state
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: Top-level Entity: |PB
+ 14. Parameter Settings for User Entity Instance: keyboard:U9
+ 15. Port Connectivity Checks: "hex2led:U8"
+ 16. Port Connectivity Checks: "hex2led:U6"
+ 17. Post-Synthesis Netlist Statistics for Top Partition
+ 18. Elapsed Time Per Partition
+ 19. Analysis & Synthesis Messages
+ 20. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2016 Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Altera and sold by Altera or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                      ;
++---------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Thu Dec 01 14:15:00 2016           ;
+; Quartus Prime Version           ; 16.0.0 Build 211 04/27/2016 SJ Standard Edition ;
+; Revision Name                   ; PB                                              ;
+; Top-level Entity Name           ; PB                                              ;
+; Family                          ; Cyclone V                                       ;
+; Logic utilization (in ALMs)     ; N/A                                             ;
+; Total registers                 ; 181                                             ;
+; Total pins                      ; 39                                              ;
+; Total virtual pins              ; 0                                               ;
+; Total block memory bits         ; 0                                               ;
+; Total DSP Blocks                ; 0                                               ;
+; Total HSSI RX PCSs              ; 0                                               ;
+; Total HSSI PMA RX Deserializers ; 0                                               ;
+; Total HSSI TX PCSs              ; 0                                               ;
+; Total HSSI PMA TX Serializers   ; 0                                               ;
+; Total PLLs                      ; 0                                               ;
+; Total DLLs                      ; 0                                               ;
++---------------------------------+-------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; PB                 ; PB                 ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation      ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                       ; Off                ; Off                ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; PowerPlay Power Optimization During Synthesis                                   ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Synthesis Seed                                                                  ; 1                  ; 1                  ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                   ;
++----------------------------------+-----------------+------------------------+----------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path     ; Library ;
++----------------------------------+-----------------+------------------------+----------------------------------+---------+
+; PB.v                             ; yes             ; User Verilog HDL File  ; W:/ECE241/Project/PushBoxes/PB.v ;         ;
++----------------------------------+-----------------+------------------------+----------------------------------+---------+
+
+
++----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary              ;
++---------------------------------------------+------------+
+; Resource                                    ; Usage      ;
++---------------------------------------------+------------+
+; Estimate of Logic utilization (ALMs needed) ; 532        ;
+;                                             ;            ;
+; Combinational ALUT usage for logic          ; 827        ;
+;     -- 7 input functions                    ; 7          ;
+;     -- 6 input functions                    ; 227        ;
+;     -- 5 input functions                    ; 163        ;
+;     -- 4 input functions                    ; 117        ;
+;     -- <=3 input functions                  ; 313        ;
+;                                             ;            ;
+; Dedicated logic registers                   ; 181        ;
+;                                             ;            ;
+; I/O pins                                    ; 39         ;
+;                                             ;            ;
+; Total DSP Blocks                            ; 0          ;
+;                                             ;            ;
+; Maximum fan-out node                        ; push_reset ;
+; Maximum fan-out                             ; 104        ;
+; Total fan-out                               ; 4063       ;
+; Average fan-out                             ; 3.74       ;
++---------------------------------------------+------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                     ;
++----------------------------+-------------------+--------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+-------------------+--------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; |PB                        ; 827 (772)         ; 181 (134)    ; 0                 ; 0          ; 39   ; 0            ; |PB                 ; PB          ; work         ;
+;    |cnt10:U1|              ; 4 (4)             ; 4 (4)        ; 0                 ; 0          ; 0    ; 0            ; |PB|cnt10:U1        ; cnt10       ; work         ;
+;    |cnt10:U3|              ; 4 (4)             ; 4 (4)        ; 0                 ; 0          ; 0    ; 0            ; |PB|cnt10:U3        ; cnt10       ; work         ;
+;    |cnt6:U2|               ; 3 (3)             ; 3 (3)        ; 0                 ; 0          ; 0    ; 0            ; |PB|cnt6:U2         ; cnt6        ; work         ;
+;    |cnt6:U4|               ; 3 (3)             ; 3 (3)        ; 0                 ; 0          ; 0    ; 0            ; |PB|cnt6:U4         ; cnt6        ; work         ;
+;    |hex2led:U5|            ; 8 (8)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |PB|hex2led:U5      ; hex2led     ; work         ;
+;    |hex2led:U6|            ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |PB|hex2led:U6      ; hex2led     ; work         ;
+;    |hex2led:U7|            ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |PB|hex2led:U7      ; hex2led     ; work         ;
+;    |hex2led:U8|            ; 7 (7)             ; 0 (0)        ; 0                 ; 0          ; 0    ; 0            ; |PB|hex2led:U8      ; hex2led     ; work         ;
+;    |keyboard:U9|           ; 12 (12)           ; 33 (33)      ; 0                 ; 0          ; 0    ; 0            ; |PB|keyboard:U9     ; keyboard    ; work         ;
++----------------------------+-------------------+--------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-----------------------------------------+
+; State Machine - |PB|keyboard:U9|state   ;
++-----------------------+-----------------+
+; Name                  ; state.status_s0 ;
++-----------------------+-----------------+
+; state.status_makecode ; 0               ;
+; state.status_s0       ; 1               ;
++-----------------------+-----------------+
+
+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; pos2_y[0]                              ; Stuck at VCC due to stuck port data_in ;
+; boy_y[1..5]                            ; Stuck at GND due to stuck port data_in ;
+; boy_y[0]                               ; Stuck at VCC due to stuck port data_in ;
+; box1_y[1..5]                           ; Stuck at GND due to stuck port data_in ;
+; box1_y[0]                              ; Stuck at VCC due to stuck port data_in ;
+; box2_y[1..5]                           ; Stuck at GND due to stuck port data_in ;
+; box2_y[0]                              ; Stuck at VCC due to stuck port data_in ;
+; brick1_x[6,7]                          ; Stuck at GND due to stuck port data_in ;
+; brick1_x[4]                            ; Stuck at VCC due to stuck port data_in ;
+; brick1_x[1]                            ; Stuck at GND due to stuck port data_in ;
+; brick1_y[1..5]                         ; Stuck at GND due to stuck port data_in ;
+; brick1_y[0]                            ; Stuck at VCC due to stuck port data_in ;
+; brick2_x[6,7]                          ; Stuck at GND due to stuck port data_in ;
+; brick2_x[2,3,5]                        ; Stuck at VCC due to stuck port data_in ;
+; brick2_y[1..5]                         ; Stuck at GND due to stuck port data_in ;
+; brick2_y[0]                            ; Stuck at VCC due to stuck port data_in ;
+; brick3_x[6,7]                          ; Stuck at GND due to stuck port data_in ;
+; brick3_x[2,3,5]                        ; Stuck at VCC due to stuck port data_in ;
+; brick3_y[6]                            ; Stuck at VCC due to stuck port data_in ;
+; brick3_y[1..5]                         ; Stuck at GND due to stuck port data_in ;
+; brick3_y[0]                            ; Stuck at VCC due to stuck port data_in ;
+; pos1_x[1,7]                            ; Stuck at GND due to stuck port data_in ;
+; pos1_y[1..5]                           ; Stuck at GND due to stuck port data_in ;
+; pos1_y[0]                              ; Stuck at VCC due to stuck port data_in ;
+; pos2_x[4,7]                            ; Stuck at GND due to stuck port data_in ;
+; pos2_x[2,3]                            ; Stuck at VCC due to stuck port data_in ;
+; pos2_x[0]                              ; Stuck at GND due to stuck port data_in ;
+; pos2_y[1..5]                           ; Stuck at GND due to stuck port data_in ;
+; brick3_x[4]                            ; Merged with brick3_x[0]                ;
+; pos1_x[2,3]                            ; Merged with brick3_y[8]                ;
+; brick2_x[0,4]                          ; Merged with brick1_y[6]                ;
+; brick2_y[7]                            ; Merged with brick2_y[6]                ;
+; brick1_x[2,3,5]                        ; Merged with brick1_x[0]                ;
+; pos2_y[8]                              ; Merged with brick1_x[0]                ;
+; pos2_x[1,5]                            ; Merged with pos1_y[8]                  ;
+; pos2_x[6]                              ; Merged with pos1_y[7]                  ;
+; pos2_y[6]                              ; Merged with pos1_x[4]                  ;
+; pos1_x[5]                              ; Merged with pos1_x[0]                  ;
+; brick3_x[1]                            ; Merged with brick3_x[0]                ;
+; brick3_y[8]                            ; Merged with brick3_y[7]                ;
+; brick2_x[1]                            ; Merged with brick1_y[6]                ;
+; brick2_y[8]                            ; Merged with brick2_y[6]                ;
+; brick1_y[8]                            ; Merged with brick1_y[7]                ;
+; pos2_y[7]                              ; Merged with brick1_x[0]                ;
+; pos1_y[7]                              ; Merged with pos1_y[8]                  ;
+; pos1_x[6]                              ; Merged with pos1_x[4]                  ;
+; keyboard:U9|state~7                    ; Lost fanout                            ;
+; count_sec[24..26]                      ; Lost fanout                            ;
+; Total Number of Removed Registers = 97 ;                                        ;
++----------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 181   ;
+; Number of registers using Synchronous Clear  ; 54    ;
+; Number of registers using Synchronous Load   ; 1     ;
+; Number of registers using Asynchronous Clear ; 116   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 84    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; vsync~reg0                              ; 2       ;
+; hsync~reg0                              ; 13      ;
+; boy_x[0]                                ; 24      ;
+; boy_y[6]                                ; 17      ;
+; pos1_y[8]                               ; 8       ;
+; brick1_x[0]                             ; 31      ;
+; pos1_x[4]                               ; 8       ;
+; brick3_y[7]                             ; 14      ;
+; pos1_y[6]                               ; 4       ;
+; brick1_y[7]                             ; 10      ;
+; brick3_x[0]                             ; 13      ;
+; brick2_y[6]                             ; 7       ;
+; box1_x[0]                               ; 20      ;
+; box1_x[1]                               ; 21      ;
+; box1_y[7]                               ; 24      ;
+; box1_y[6]                               ; 23      ;
+; box2_x[1]                               ; 22      ;
+; box2_y[8]                               ; 22      ;
+; box1_x[3]                               ; 17      ;
+; box1_x[2]                               ; 17      ;
+; box2_x[3]                               ; 18      ;
+; box2_x[2]                               ; 18      ;
+; box1_x[4]                               ; 23      ;
+; box2_x[5]                               ; 24      ;
+; boy_x[4]                                ; 24      ;
+; boy_x[3]                                ; 16      ;
+; boy_x[2]                                ; 16      ;
+; boy_x[5]                                ; 26      ;
+; Total number of inverted registers = 28 ;         ;
++-----------------------------------------+---------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |PB|keyboard:U9|xhdl0.counter_in[1] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |PB|keyboard:U9|xhdl0.counter_in[0] ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |PB|win_num[0]                      ;
+; 260:1              ; 3 bits    ; 519 LEs       ; 6 LEs                ; 513 LEs                ; Yes        ; |PB|box2_x[6]                       ;
+; 260:1              ; 2 bits    ; 346 LEs       ; 4 LEs                ; 342 LEs                ; Yes        ; |PB|box1_x[6]                       ;
+; 260:1              ; 2 bits    ; 346 LEs       ; 4 LEs                ; 342 LEs                ; Yes        ; |PB|boy_x[6]                        ;
+; 260:1              ; 2 bits    ; 346 LEs       ; 4 LEs                ; 342 LEs                ; Yes        ; |PB|boy_y[8]                        ;
+; 260:1              ; 2 bits    ; 346 LEs       ; 4 LEs                ; 342 LEs                ; Yes        ; |PB|box2_x[2]                       ;
+; 260:1              ; 5 bits    ; 865 LEs       ; 10 LEs               ; 855 LEs                ; Yes        ; |PB|box1_x[2]                       ;
+; 260:1              ; 4 bits    ; 692 LEs       ; 8 LEs                ; 684 LEs                ; Yes        ; |PB|boy_x[3]                        ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 6 LEs                ; 4 LEs                  ; No         ; |PB|hex2led:U6|led[6]               ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 6 LEs                ; 4 LEs                  ; No         ; |PB|hex2led:U8|led[1]               ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |PB|keyboard:U9|state               ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 16 LEs               ; 4 LEs                  ; No         ; |PB|hex2led:U5|led[3]               ;
+; 16:1               ; 2 bits    ; 20 LEs        ; 16 LEs               ; 4 LEs                  ; No         ; |PB|hex2led:U7|led[3]               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |PB ;
++----------------+-------+-------------------------------------------+
+; Parameter Name ; Value ; Type                                      ;
++----------------+-------+-------------------------------------------+
+; clbrick        ; 100   ; Unsigned Binary                           ;
+; clpos          ; 111   ; Unsigned Binary                           ;
+; clboy          ; 001   ; Unsigned Binary                           ;
+; clbox          ; 110   ; Unsigned Binary                           ;
+; clback         ; 000   ; Unsigned Binary                           ;
+; clgrid         ; 101   ; Unsigned Binary                           ;
+; clin           ; 011   ; Unsigned Binary                           ;
++----------------+-------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: keyboard:U9 ;
++-----------------+-------+--------------------------------+
+; Parameter Name  ; Value ; Type                           ;
++-----------------+-------+--------------------------------+
+; status_s0       ; 00    ; Unsigned Binary                ;
+; status_makecode ; 01    ; Unsigned Binary                ;
++-----------------+-------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------+
+; Port Connectivity Checks: "hex2led:U8"   ;
++--------+-------+----------+--------------+
+; Port   ; Type  ; Severity ; Details      ;
++--------+-------+----------+--------------+
+; hex[3] ; Input ; Info     ; Stuck at GND ;
++--------+-------+----------+--------------+
+
+
++------------------------------------------+
+; Port Connectivity Checks: "hex2led:U6"   ;
++--------+-------+----------+--------------+
+; Port   ; Type  ; Severity ; Details      ;
++--------+-------+----------+--------------+
+; hex[3] ; Input ; Info     ; Stuck at GND ;
++--------+-------+----------+--------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 181                         ;
+;     CLR               ; 44                          ;
+;     CLR SCLR          ; 19                          ;
+;     CLR SLD           ; 1                           ;
+;     ENA               ; 2                           ;
+;     ENA CLR           ; 48                          ;
+;     ENA CLR SCLR      ; 4                           ;
+;     ENA SCLR          ; 30                          ;
+;     SCLR              ; 1                           ;
+;     plain             ; 32                          ;
+; arriav_io_obuf        ; 1                           ;
+; arriav_lcell_comb     ; 831                         ;
+;     arith             ; 172                         ;
+;         0 data inputs ; 10                          ;
+;         1 data inputs ; 158                         ;
+;         2 data inputs ; 4                           ;
+;     extend            ; 7                           ;
+;         7 data inputs ; 7                           ;
+;     normal            ; 652                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 9                           ;
+;         2 data inputs ; 57                          ;
+;         3 data inputs ; 78                          ;
+;         4 data inputs ; 117                         ;
+;         5 data inputs ; 163                         ;
+;         6 data inputs ; 227                         ;
+; boundary_port         ; 39                          ;
+;                       ;                             ;
+; Max LUT depth         ; 6.10                        ;
+; Average LUT depth     ; 4.26                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 16.0.0 Build 211 04/27/2016 SJ Standard Edition
+    Info: Processing started: Thu Dec 01 14:14:48 2016
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off PB -c PB
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 5 design units, including 5 entities, in source file pb.v
+    Info (12023): Found entity 1: PB File: W:/ECE241/Project/PushBoxes/PB.v Line: 2
+    Info (12023): Found entity 2: keyboard File: W:/ECE241/Project/PushBoxes/PB.v Line: 1190
+    Info (12023): Found entity 3: cnt6 File: W:/ECE241/Project/PushBoxes/PB.v Line: 1292
+    Info (12023): Found entity 4: hex2led File: W:/ECE241/Project/PushBoxes/PB.v Line: 1319
+    Info (12023): Found entity 5: cnt10 File: W:/ECE241/Project/PushBoxes/PB.v Line: 1343
+Info (12127): Elaborating entity "PB" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at PB.v(23): object "clk_for" assigned a value but never read File: W:/ECE241/Project/PushBoxes/PB.v Line: 23
+Warning (10230): Verilog HDL assignment warning at PB.v(129): truncated value with size 32 to match size of target (30) File: W:/ECE241/Project/PushBoxes/PB.v Line: 129
+Warning (10230): Verilog HDL assignment warning at PB.v(159): truncated value with size 32 to match size of target (4) File: W:/ECE241/Project/PushBoxes/PB.v Line: 159
+Warning (10230): Verilog HDL assignment warning at PB.v(160): truncated value with size 32 to match size of target (27) File: W:/ECE241/Project/PushBoxes/PB.v Line: 160
+Warning (10230): Verilog HDL assignment warning at PB.v(184): truncated value with size 32 to match size of target (10) File: W:/ECE241/Project/PushBoxes/PB.v Line: 184
+Warning (10230): Verilog HDL assignment warning at PB.v(203): truncated value with size 32 to match size of target (9) File: W:/ECE241/Project/PushBoxes/PB.v Line: 203
+Warning (10230): Verilog HDL assignment warning at PB.v(468): truncated value with size 32 to match size of target (3) File: W:/ECE241/Project/PushBoxes/PB.v Line: 468
+Warning (10230): Verilog HDL assignment warning at PB.v(487): truncated value with size 32 to match size of target (8) File: W:/ECE241/Project/PushBoxes/PB.v Line: 487
+Warning (10230): Verilog HDL assignment warning at PB.v(490): truncated value with size 32 to match size of target (8) File: W:/ECE241/Project/PushBoxes/PB.v Line: 490
+Warning (10230): Verilog HDL assignment warning at PB.v(491): truncated value with size 32 to match size of target (8) File: W:/ECE241/Project/PushBoxes/PB.v Line: 491
+Warning (10230): Verilog HDL assignment warning at PB.v(497): truncated value with size 32 to match size of target (8) File: W:/ECE241/Project/PushBoxes/PB.v Line: 497
+Warning (10230): Verilog HDL assignment warning at PB.v(500): truncated value with size 32 to match size of target (8) File: W:/ECE241/Project/PushBoxes/PB.v Line: 500
+Warning (10230): Verilog HDL assignment warning at PB.v(501): truncated value with size 32 to match size of target (8) File: W:/ECE241/Project/PushBoxes/PB.v Line: 501
+Warning (10230): Verilog HDL assignment warning at PB.v(505): truncated value with size 32 to match size of target (8) File: W:/ECE241/Project/PushBoxes/PB.v Line: 505
+Warning (10230): Verilog HDL assignment warning at PB.v(507): truncated value with size 32 to match size of target (8) File: W:/ECE241/Project/PushBoxes/PB.v Line: 507
+Warning (10230): Verilog HDL assignment warning at PB.v(513): truncated value with size 32 to match size of target (8) File: W:/ECE241/Project/PushBoxes/PB.v Line: 513
+Warning (10230): Verilog HDL assignment warning at PB.v(516): truncated value with size 32 to match size of target (8) File: W:/ECE241/Project/PushBoxes/PB.v Line: 516
+Warning (10230): Verilog HDL assignment warning at PB.v(517): truncated value with size 32 to match size of target (8) File: W:/ECE241/Project/PushBoxes/PB.v Line: 517
+Warning (10230): Verilog HDL assignment warning at PB.v(523): truncated value with size 32 to match size of target (8) File: W:/ECE241/Project/PushBoxes/PB.v Line: 523
+Warning (10230): Verilog HDL assignment warning at PB.v(526): truncated value with size 32 to match size of target (8) File: W:/ECE241/Project/PushBoxes/PB.v Line: 526
+Warning (10230): Verilog HDL assignment warning at PB.v(527): truncated value with size 32 to match size of target (8) File: W:/ECE241/Project/PushBoxes/PB.v Line: 527
+Warning (10230): Verilog HDL assignment warning at PB.v(531): truncated value with size 32 to match size of target (8) File: W:/ECE241/Project/PushBoxes/PB.v Line: 531
+Warning (10230): Verilog HDL assignment warning at PB.v(533): truncated value with size 32 to match size of target (8) File: W:/ECE241/Project/PushBoxes/PB.v Line: 533
+Warning (10230): Verilog HDL assignment warning at PB.v(539): truncated value with size 32 to match size of target (9) File: W:/ECE241/Project/PushBoxes/PB.v Line: 539
+Warning (10230): Verilog HDL assignment warning at PB.v(542): truncated value with size 32 to match size of target (9) File: W:/ECE241/Project/PushBoxes/PB.v Line: 542
+Warning (10230): Verilog HDL assignment warning at PB.v(543): truncated value with size 32 to match size of target (9) File: W:/ECE241/Project/PushBoxes/PB.v Line: 543
+Warning (10230): Verilog HDL assignment warning at PB.v(549): truncated value with size 32 to match size of target (9) File: W:/ECE241/Project/PushBoxes/PB.v Line: 549
+Warning (10230): Verilog HDL assignment warning at PB.v(552): truncated value with size 32 to match size of target (9) File: W:/ECE241/Project/PushBoxes/PB.v Line: 552
+Warning (10230): Verilog HDL assignment warning at PB.v(553): truncated value with size 32 to match size of target (9) File: W:/ECE241/Project/PushBoxes/PB.v Line: 553
+Warning (10230): Verilog HDL assignment warning at PB.v(557): truncated value with size 32 to match size of target (9) File: W:/ECE241/Project/PushBoxes/PB.v Line: 557
+Warning (10230): Verilog HDL assignment warning at PB.v(559): truncated value with size 32 to match size of target (9) File: W:/ECE241/Project/PushBoxes/PB.v Line: 559
+Warning (10230): Verilog HDL assignment warning at PB.v(565): truncated value with size 32 to match size of target (9) File: W:/ECE241/Project/PushBoxes/PB.v Line: 565
+Warning (10230): Verilog HDL assignment warning at PB.v(568): truncated value with size 32 to match size of target (9) File: W:/ECE241/Project/PushBoxes/PB.v Line: 568
+Warning (10230): Verilog HDL assignment warning at PB.v(569): truncated value with size 32 to match size of target (9) File: W:/ECE241/Project/PushBoxes/PB.v Line: 569
+Warning (10230): Verilog HDL assignment warning at PB.v(575): truncated value with size 32 to match size of target (9) File: W:/ECE241/Project/PushBoxes/PB.v Line: 575
+Warning (10230): Verilog HDL assignment warning at PB.v(578): truncated value with size 32 to match size of target (9) File: W:/ECE241/Project/PushBoxes/PB.v Line: 578
+Warning (10230): Verilog HDL assignment warning at PB.v(579): truncated value with size 32 to match size of target (9) File: W:/ECE241/Project/PushBoxes/PB.v Line: 579
+Warning (10230): Verilog HDL assignment warning at PB.v(583): truncated value with size 32 to match size of target (9) File: W:/ECE241/Project/PushBoxes/PB.v Line: 583
+Warning (10230): Verilog HDL assignment warning at PB.v(585): truncated value with size 32 to match size of target (9) File: W:/ECE241/Project/PushBoxes/PB.v Line: 585
+Info (12128): Elaborating entity "cnt10" for hierarchy "cnt10:U1" File: W:/ECE241/Project/PushBoxes/PB.v Line: 74
+Warning (10230): Verilog HDL assignment warning at PB.v(1365): truncated value with size 32 to match size of target (4) File: W:/ECE241/Project/PushBoxes/PB.v Line: 1365
+Info (12128): Elaborating entity "cnt6" for hierarchy "cnt6:U2" File: W:/ECE241/Project/PushBoxes/PB.v Line: 76
+Warning (10230): Verilog HDL assignment warning at PB.v(1314): truncated value with size 32 to match size of target (3) File: W:/ECE241/Project/PushBoxes/PB.v Line: 1314
+Info (12128): Elaborating entity "hex2led" for hierarchy "hex2led:U5" File: W:/ECE241/Project/PushBoxes/PB.v Line: 82
+Info (12128): Elaborating entity "keyboard" for hierarchy "keyboard:U9" File: W:/ECE241/Project/PushBoxes/PB.v Line: 90
+Warning (10230): Verilog HDL assignment warning at PB.v(1250): truncated value with size 32 to match size of target (4) File: W:/ECE241/Project/PushBoxes/PB.v Line: 1250
+Critical Warning (10237): Verilog HDL warning at PB.v(1252): can't infer register for assignment in edge-triggered always construct because the clock isn't obvious. Generated combinational logic instead File: W:/ECE241/Project/PushBoxes/PB.v Line: 1252
+Warning (13034): The following nodes have both tri-state and non-tri-state drivers
+    Warning (13035): Inserted always-enabled tri-state buffer between "hsync" and its non-tri-state driver. File: W:/ECE241/Project/PushBoxes/PB.v Line: 11
+Info (13060): One or more bidirectional pins are fed by always enabled tri-state buffers
+    Info (13061): Fan-out of permanently enabled tri-state buffer feeding bidirectional pin "hsync" is moved to its source File: W:/ECE241/Project/PushBoxes/PB.v Line: 11
+Warning (13009): TRI or OPNDRN buffers permanently enabled
+    Warning (13010): Node "hsync~synth" File: W:/ECE241/Project/PushBoxes/PB.v Line: 11
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "vga_sync_n" is stuck at GND File: W:/ECE241/Project/PushBoxes/PB.v Line: 17
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 4 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file W:/ECE241/Project/PushBoxes/output_files/PB.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 899 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 3 input pins
+    Info (21059): Implemented 35 output pins
+    Info (21060): Implemented 1 bidirectional pins
+    Info (21061): Implemented 860 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 50 warnings
+    Info: Peak virtual memory: 898 megabytes
+    Info: Processing ended: Thu Dec 01 14:15:00 2016
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:22
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in W:/ECE241/Project/PushBoxes/output_files/PB.map.smsg.
+
+

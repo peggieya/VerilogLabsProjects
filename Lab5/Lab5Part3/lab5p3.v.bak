@@ -1,0 +1,120 @@
+`timescale 10ns/10ns
+module lab5p3(SW,KEY,CLOCK_50,LEDR);
+input [2:0]SW;
+input CLOCK_50;
+input [1:0]KEY;
+output[3:0]LEDR;
+wire [10:0]w;
+wire [10:0]M;
+wire [3:0] m;
+wire enable;
+reg [25:0]count1;
+always@(posedge CLOCK_50)
+begin
+if(SW[0]|enable)
+count1<=26'd0;
+else
+count1<=count1+1'b1;
+end
+assign enable=(count1==26'd5000000)?1'b1:1'b0;
+muxM u0(.select(SW),.out(w));//letters takes from SW inputs
+mux2to1 u1(.x(w[10:0]),.y(0),.s(KEY[0]),.m(M[10:0]));//if not reset, act morse code
+Displaycounter u2(.clk(CLOCK_50),.enable(enable),.q(m));
+display u3(.i(m[3:0]),.array(M[10:0]),.enable(~KEY[1]),.l(LEDR[0]));
+endmodule
+
+module muxM(select,out);
+input[2:0]select;
+output reg [10:0]out;
+always@(*)
+begin 
+case(select)
+3'b000: out<=11'b10111000000; //A
+3'b001: out<=11'b11101010100; //B
+3'b010: out<=11'b11101011101; //C
+3'b011: out<=11'b11101010000; //D
+3'b100: out<=11'b10000000000; //E
+3'b101: out<=11'b10101110100; //F
+3'b110: out<=11'b11101110100; //G
+3'b111: out<=11'b10101010000; //H
+default: out<=11'b00000000000;
+endcase
+end
+endmodule
+
+module mux2to1(x, y, s, m);
+input [10:0]x;
+input y;
+input s;
+output [10:0]m;
+assign m = s ? y : x;
+endmodule
+
+module Displaycounter(ck,enable,q);
+input enable;
+input ck;
+output reg [3:0] q;
+always @(posedge ck)
+begin
+if(q==4'b1010 & enable)
+begin
+q<=0;
+end
+else if(enable==1'b1)
+begin
+q<=q+1;
+end
+end
+endmodule
+
+module display(i,array,enable,l);
+input [3:0]i;
+input [10:0]array;
+input enable;
+output reg l;
+always @(*)
+begin
+if(enable) begin
+case(i)
+4'b0000: begin 
+l<=array[10];
+end
+4'b0001: begin
+l<=array[9];
+end
+4'b0010: begin
+l<=array[8];
+end
+4'b0011: begin
+l<=array[7];
+end
+4'b0100:begin
+l<=array[6];
+end
+4'b0101: begin
+l<=array[5];
+end
+4'b0110: begin
+l<=array[4];
+end
+4'b0111: begin
+l<=array[3];
+end
+4'b1000:begin
+l<=array[2];
+end
+4'b1001: begin
+l<=array[1];
+end
+4'b1010: begin
+l<=array[0];
+end
+default: begin
+l<=array[0];
+end
+endcase
+end
+else 
+l<=0;
+end
+endmodule

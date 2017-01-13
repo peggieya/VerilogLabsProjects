@@ -1,0 +1,105 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dW:/ECE241/Lab2Part
+vkkk
+Z1 !s110 1474909945
+!i10b 1
+!s100 <^5F:ELaN2B[o994NI<iL2
+IR8d@nWZ^hlRNm=]moVYTe1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1474905224
+Z4 8lab2p3.v
+Z5 Flab2p3.v
+L0 41
+Z6 OV;L;10.4d;61
+r1
+!s85 0
+31
+Z7 !s108 1474909945.000000
+Z8 !s107 lab2p3.v|
+Z9 !s90 -reportprogress|300|lab2p3.v|
+!i113 1
+vlab2
+Z10 !s110 1474909728
+!i10b 1
+!s100 Id`UIfZ<_=zXI@kmN]]d71
+IAYb>K:V;:3jQhC4k:mlh>3
+R2
+R0
+Z11 w1474642372
+Z12 8lab2.v
+Z13 Flab2.v
+L0 8
+R6
+r1
+!s85 0
+31
+Z14 !s108 1474909728.000000
+Z15 !s107 lab2.v|
+Z16 !s90 -reportprogress|300|lab2.v|
+!i113 1
+vlab2p3
+R1
+!i10b 1
+!s100 80nbKazz@X9J5VGAcMaDS2
+IPXZPWHO_edbT]<8c>>`bL3
+R2
+R0
+R3
+R4
+R5
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+vmux2to1
+R10
+!i10b 1
+!s100 aDVQ4NEj5ILS0R9_>^3S=1
+ILGenHGN9@2@?TLZjOk5Jd0
+R2
+R0
+R11
+R12
+R13
+L0 48
+R6
+r1
+!s85 0
+31
+R14
+R15
+R16
+!i113 1
+vmux4to1
+R10
+!i10b 1
+!s100 KKSFj@kWg@j0TPX4PLg8h1
+IJeBCEe_Z[[kZ>S;Pb9nS?2
+R2
+R0
+R11
+R12
+R13
+L0 22
+R6
+r1
+!s85 0
+31
+R14
+R15
+R16
+!i113 1

@@ -1,0 +1,5 @@
+
+State Machine - |PB|keyboard:U9|state
+Name state.status_s0 
+state.status_makecode 0 
+state.status_s0 1 

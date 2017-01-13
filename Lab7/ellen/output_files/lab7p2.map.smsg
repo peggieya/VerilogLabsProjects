@@ -1,0 +1,2 @@
+Warning (10268): Verilog HDL information at lab7p2.v(178): always construct contains both blocking and non-blocking assignments File: W:/ECE241/Lab7/ellen/lab7p2.v Line: 178
+Info (10281): Verilog HDL Declaration information at lab7p2.v(43): object "plot" differs only in case from object "PLOT" in the same scope File: W:/ECE241/Lab7/ellen/lab7p2.v Line: 43

@@ -1,0 +1,11 @@
+I/O Assignment Analysis Status : Successful - Sun Nov 20 20:59:03 2016
+Quartus Prime Version : 16.0.0 Build 211 04/27/2016 SJ Standard Edition
+Revision Name : week2
+Top-level Entity Name : week2
+Family : Cyclone V
+Device : 5CSEMA5F31C6
+Timing Models : Final
+Total pins : 0 / 457 ( 0 % )
+Total virtual pins : 0
+Total PLLs : 0 / 6 ( 0 % )
+Total DLLs : 0 / 4 ( 0 % )

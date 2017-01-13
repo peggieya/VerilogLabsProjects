@@ -1,0 +1,87 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dW:/ECE241/Lab5/Lab5Part3
+vcounter
+Z1 !s110 1477324757
+!i10b 1
+!s100 9NUS<E6e3WzM9O?FM@Q5b0
+I6fS;e0m;2RmF0<8I@ozCe1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1477271073
+Z4 8lab5p3.v
+Z5 Flab5p3.v
+L0 14
+Z6 OV;L;10.4d;61
+r1
+!s85 0
+31
+Z7 !s108 1477324756.000000
+Z8 !s107 lab5p3.v|
+Z9 !s90 -reportprogress|300|lab5p3.v|
+!i113 1
+vdisplay
+R1
+!i10b 1
+!s100 lUzQY2;NFRaV2CG1N@0E[2
+IH4bZI^S>:I4bXN1B7>h_O0
+R2
+R0
+R3
+R4
+R5
+L0 48
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+vlab5p3
+R1
+!i10b 1
+!s100 OOja1zcD;O49eFNU:N1@d2
+I<SS==NNDOL7YzCA1_T8Bn3
+R2
+R0
+R3
+R4
+R5
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+vmuxM
+R1
+!i10b 1
+!s100 eG9i7@@k1ga2mJ=mDQSPG2
+IWW[UnKBfBkM[8DHhW9kdd2
+R2
+R0
+R3
+R4
+R5
+L0 30
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+nmux@m
